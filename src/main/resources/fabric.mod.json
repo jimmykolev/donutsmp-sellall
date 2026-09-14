@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "donutsmp_sellall",
+  "version": "${version}",
+  "name": "DonutSMP Sell All",
+  "description": "Client-side command for quickly listing matching unstackable items on DonutSMP's auction house.",
+  "authors": ["Jimmy Kolev"],
+  "contact": {
+    "sources": "https://github.com/jimmykolev/donutsmp-sellall"
+  },
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.jimmykolev.donutsmpsellall.DonutSellAllClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
