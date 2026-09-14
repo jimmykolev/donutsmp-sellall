@@ -91,7 +91,7 @@ public final class DonutSellAllClient implements ClientModInitializer {
         delayTicks = requestedDelay;
         target = held.copyWithCount(1);
         targetName = held.getName().getString();
-        originalHotbarSlot = client.player.getInventory().selectedSlot;
+        originalHotbarSlot = client.player.getInventory().getSelectedSlot();
         listed = 0;
         cooldown = 0;
         removalWait = 0;
@@ -163,12 +163,12 @@ public final class DonutSellAllClient implements ClientModInitializer {
         }
 
         if (matchingSlot < 9) {
-            client.player.getInventory().selectedSlot = matchingSlot;
+            client.player.getInventory().setSelectedSlot(matchingSlot);
             cooldown = 2;
             return;
         }
 
-        int selected = client.player.getInventory().selectedSlot;
+        int selected = client.player.getInventory().getSelectedSlot();
         client.interactionManager.clickSlot(
             client.player.currentScreenHandler.syncId,
             matchingSlot,
@@ -180,7 +180,7 @@ public final class DonutSellAllClient implements ClientModInitializer {
     }
 
     private static int findMatchingSlot(MinecraftClient client) {
-        int selected = client.player.getInventory().selectedSlot;
+        int selected = client.player.getInventory().getSelectedSlot();
 
         for (int slot = 0; slot < 9; slot++) {
             if (slot != selected && matches(client.player.getInventory().getStack(slot))) {
@@ -190,7 +190,6 @@ public final class DonutSellAllClient implements ClientModInitializer {
 
         for (int slot = 9; slot < 36; slot++) {
             if (matches(client.player.getInventory().getStack(slot))) {
-                // PlayerScreenHandler uses the same slot numbers for inventory slots 9-35.
                 return slot;
             }
         }
@@ -220,7 +219,7 @@ public final class DonutSellAllClient implements ClientModInitializer {
         target = ItemStack.EMPTY;
 
         if (client.player != null && originalHotbarSlot >= 0 && originalHotbarSlot < 9) {
-            client.player.getInventory().selectedSlot = originalHotbarSlot;
+            client.player.getInventory().setSelectedSlot(originalHotbarSlot);
         }
 
         message(text, colour);
