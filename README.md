@@ -1,5 +1,7 @@
 # DonutSMP Sell All
 
+![Build](https://github.com/jimmykolev/donutsmp-sellall/actions/workflows/build.yml/badge.svg)
+
 A client-side Fabric 1.21.1 mod that lists matching unstackable inventory items on the auction house one at a time.
 
 ## Requirements
